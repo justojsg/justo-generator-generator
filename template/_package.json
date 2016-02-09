@@ -1,0 +1,37 @@
+{
+  "name": "${scope.name}",
+  "version": "0.1.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "keywords": [
+    "justo-generator"
+  ],
+  "bugs": {
+    "url": "",
+    "email": ""
+  },
+  "engines": {
+    "node": "",
+    "npm": ""
+  },
+  "dependencies": {
+    "justo-generator": "*"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "justo": "*",
+    "justo-assert": "*"
+  },
+  "files": [
+    "lib/",
+    "template/"
+  ],
+  "scripts": {
+    "test": "justo test"
+  }
+}
