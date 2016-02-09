@@ -41,6 +41,7 @@
       this.copy("_editorconfig", ".editorconfig");
       this.copy("_gitignore", ".gitignore");
       this.copy("_jshintrc", ".jshintrc");
+      this.copy("_travis.yml", ".travis.yml");
       this.template("_package.json", "package.json", { name: _path2.default.basename(process.cwd()) });
       this.copy("index.js");
       this.copy("Justo.js");

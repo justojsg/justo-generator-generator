@@ -37,6 +37,7 @@ suite("Genertaor", function() {
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
       file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
       file(DST.path, "Justo.js").must.exist();
