@@ -9,3 +9,13 @@ Generator for a `Justo.js` generator scaffold.
 ```
 npm install -g justo-generator-generator
 ```
+
+## Parameters
+
+- `type`. Generator type: `simple` or `composite`.
+
+Example:
+
+```
+justo -g generator type:simple
+```

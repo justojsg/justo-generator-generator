@@ -10,7 +10,7 @@ const init = require("justo").init;
 const fin = require("justo").fin;
 
 //suite
-suite("Genertaor", function() {
+suite("Generator", function() {
   suite("#constructor()", function() {
     test("constructor()", function() {
       var gen = new Generator({});
@@ -31,8 +31,8 @@ suite("Genertaor", function() {
       DST.remove();
     });
 
-    test("generate(answers)", function() {
-      gen.generate({});
+    test("generate(answers) - type:simple", function() {
+      gen.generate({type: "simple"});
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
@@ -40,6 +40,7 @@ suite("Genertaor", function() {
       file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
+      file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator.js\").default;");
       file(DST.path, "Justo.js").must.exist();
       file(DST.path, "Justo.json").must.exist();
       file(DST.path, "README.md").must.exist();
@@ -48,6 +49,30 @@ suite("Genertaor", function() {
       dir(DST.path, "test/unit/data").must.exist();
       file(DST.path, "test/unit/index.js").must.exist();
       file(DST.path, "test/unit/lib/Generator.js").must.exist();
+    });
+
+    test("generate(answers) - type:composite", function() {
+      gen.generate({type: "composite"});
+
+      file(DST.path, ".editorconfig").must.exist();
+      file(DST.path, ".gitignore").must.exist();
+      file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".travis.yml").must.exist();
+      file(DST.path, "package.json").must.exist();
+      file(DST.path, "index.js").must.exist();
+      file(DST.path, "index.js").text.must.contain("module.exports = {");
+      file(DST.path, "Justo.js").must.exist();
+      file(DST.path, "Justo.json").must.exist();
+      file(DST.path, "README.md").must.exist();
+      dir(DST.path, "template").must.exist();
+      file(DST.path, "lib/Generator.js").must.exist();
+      dir(DST.path, "test/unit/data").must.exist();
+      file(DST.path, "test/unit/index.js").must.exist();
+      file(DST.path, "test/unit/lib/Generator.js").must.exist();
+    });
+
+    test("generate(answers) - type:unknown", function() {
+      gen.generate.bind(gen).must.raise("Invalid generator type: unknown.", [{type: "unknown"}]);
     });
   });
 })();
