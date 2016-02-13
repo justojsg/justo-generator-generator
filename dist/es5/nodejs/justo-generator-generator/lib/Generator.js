@@ -16,6 +16,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -58,4 +73,4 @@
       this.copy("lib/Generator.js");
       this.copy("test/unit/index.js");
       this.copy("test/unit/lib/Generator.js");
-      this.mkdir("test/unit/data");} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'." }, commands: {} };} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;

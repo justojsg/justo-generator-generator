@@ -15,6 +15,21 @@ export default class extends Generator {
   /**
    * @override
    */
+   get help() {
+     return {
+       desc: "",
+       params: {
+
+       },
+       commands: {
+         
+       }
+     };
+   }
+
+  /**
+   * @override
+   */
   init() {
     super.init();
   }
