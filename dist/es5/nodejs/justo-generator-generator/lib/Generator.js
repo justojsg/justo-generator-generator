@@ -42,9 +42,9 @@
       this.copy("_gitignore", ".gitignore");
       this.copy("_jshintrc", ".jshintrc");
       this.copy("_travis.yml", ".travis.yml");
-      this.template("_package.json", "package.json", { name: _path2.default.basename(process.cwd()) });
+      this.template("_package.json", "package.json", {});
       this.copy("index.js");
-      this.copy("Justo.js");
+      this.template("Justo.js", {});
       this.copy("Justo.json");
       this.copy("README.md");
       this.mkdir("template");
