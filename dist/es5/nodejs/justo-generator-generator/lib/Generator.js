@@ -36,6 +36,7 @@
 
 
 
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -88,4 +89,4 @@
       {
         this.template("test/unit/index.composite.js", "index.js");}
 
-      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL." }, commands: {} };} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", desc: "The description generator.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL." }, commands: {} };} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;
