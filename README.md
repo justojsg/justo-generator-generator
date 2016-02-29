@@ -12,7 +12,11 @@ npm install -g justo-generator-generator
 
 ## Parameters
 
-- `type`. Generator type: `simple` or `composite`.
+To list the parameters:
+
+```
+justo -g generator help
+```
 
 Example:
 

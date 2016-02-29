@@ -31,6 +31,11 @@
 
 
 
+
+
+
+
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -65,12 +70,22 @@
       this.copy("_gitignore", ".gitignore");
       this.copy("_jshintrc", ".jshintrc");
       this.copy("_travis.yml", ".travis.yml");
-      this.template("_package.json", "package.json", {});
-      this.template("Justo.js", {});
+      this.template("_package.json", "package.json", { 
+        author: answers.author, 
+        authorEmail: answers.authorEmail, 
+        authorUrl: answers.authorUrl, 
+        desc: answers.desc, 
+        homepage: answers.homepage });
+
+      this.template("Justo.js", { npmWho: answers.npmWho });
       this.copy("Justo.json");
       this.copy("README.md");
       this.mkdir("template");
       this.copy("lib/Generator.js");
-      this.copy("test/unit/index.js");
-      this.copy("test/unit/lib/Generator.js");
-      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'." }, commands: {} };} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;
+      this.template("test/unit/lib/Generator.js");
+      if (answers.type == "simple" || answers.type === undefined) {
+        this.template("test/unit/index.simple.js", "index.js");} else 
+      {
+        this.template("test/unit/index.composite.js", "index.js");}
+
+      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL." }, commands: {} };} }]);return _class;}(_justoGenerator.Generator);exports.default = _class;

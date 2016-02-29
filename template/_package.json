@@ -1,12 +1,12 @@
 {
   "name": "${dir.name}",
   "version": "0.1.0",
-  "description": "",
-  "homepage": "",
+  "description": "${scope.desc}",
+  "homepage": "${scope.homepage}",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "${scope.author}",
+    "email": "${scope.authorEmail}",
+    "url": "${scope.authorUrl}"
   },
   "contributors": [
     {
