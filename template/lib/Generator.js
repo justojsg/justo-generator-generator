@@ -1,10 +1,10 @@
 //import
-import {Generator} from "justo-generator";
+import {HandlebarsGenerator} from "justo-generator";
 
 /**
  * Generator.
  */
-export default class extends Generator {
+export default class extends HandlebarsGenerator {
   /**
    * Constructor.
    */
@@ -22,7 +22,7 @@ export default class extends Generator {
 
        },
        commands: {
-         
+
        }
      };
    }
