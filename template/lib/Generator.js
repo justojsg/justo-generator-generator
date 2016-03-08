@@ -51,6 +51,13 @@ export default class extends HandlebarsGenerator {
   /**
    * @override
    */
+  pregenerate(answers) {
+    
+  }
+
+  /**
+   * @override
+   */
   generate(answers) {
 
   }
