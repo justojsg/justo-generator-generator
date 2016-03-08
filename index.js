@@ -1,1 +1,4 @@
-module.exports = require("./lib/Generator.js").default;
+module.exports = {
+  "default": require("./lib/Generator.js").default,
+  "add generator": require("./lib/AddGeneratorGenerator.js").default
+};

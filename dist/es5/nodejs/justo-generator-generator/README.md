@@ -23,3 +23,11 @@ Example:
 ```
 justo -g generator type:simple
 ```
+
+## Commands
+
+To list the commands:
+
+```
+justo -g generator help
+```

@@ -5,7 +5,11 @@ const Generator = require("../../dist/es5/nodejs/justo-generator-generator");
 
 //suite
 suite("index", function() {
-  test("Generator", function() {
-    Generator.must.be.instanceOf(Function);
+  test("default", function() {
+    Generator.default.must.be.instanceOf(Function);
+  });
+
+  test("add generator", function() {
+    Generator["add generator"].must.be.instanceOf(Function);
   });
 })();

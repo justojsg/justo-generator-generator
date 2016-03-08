@@ -7,7 +7,7 @@ const suite = require("justo").suite;
 const test = require("justo").test;
 const init = require("justo").init;
 const fin = require("justo").fin;
-const Generator = require("../../../dist/es5/nodejs/{{dir.name}}");
+const Generator = require("../../../dist/es5/nodejs/justo-generator-generator")["add generator"];
 
 //suite
 suite("Generator", function() {
@@ -24,15 +24,23 @@ suite("Generator", function() {
     init("*", function() {
       DST_DIR = Dir.createTmpDir();
       DST = DST_DIR.path;
-      gen = new Generator({src: "dist/es5/nodejs/{{dir.name}}/template", dst: DST}, {});
+      gen = new Generator({src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST}, {});
     });
 
     fin("*", function() {
       DST_DIR.remove();
     });
 
-    test("generate(answers)", function() {
-      gen.generate({});
+    test("generate(answers) - name:'word'", function() {
+      gen.generate({name: "word"});
+      file(DST, "lib", "WordGenerator.js").must.exist();
+      file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
+    });
+
+    test("generate(answers) - name:'several words'", function() {
+      gen.generate({name: "one two"});
+      file(DST, "lib", "OneTwoGenerator.js").must.exist();
+      file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
   });
 })();

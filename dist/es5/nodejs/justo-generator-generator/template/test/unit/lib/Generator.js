@@ -3,11 +3,11 @@ const path = require("path");
 const Dir = require("justo-fs").Dir;
 const file = require("justo-assert-fs").file;
 const dir = require("justo-assert-fs").dir;
-const Generator = require("../../../dist/es5/nodejs/{{dir.name}}");
 const suite = require("justo").suite;
 const test = require("justo").test;
 const init = require("justo").init;
 const fin = require("justo").fin;
+const Generator = require("../../../dist/es5/nodejs/{{dir.name}}");
 
 //suite
 suite("Generator", function() {
@@ -33,12 +33,6 @@ suite("Generator", function() {
 
     test("generate(answers)", function() {
       gen.generate({});
-
-    });
-
-    test("generate(answers)", function() {
-      gen.generate({});
-
     });
   });
 })();
