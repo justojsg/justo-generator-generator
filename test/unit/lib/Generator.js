@@ -40,7 +40,7 @@ suite("Generator", function() {
       file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
-      file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator.js\").default;");
+      file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
       file(DST.path, "Justo.js").must.exist();
       file(DST.path, "Justo.json").must.exist();
       file(DST.path, "README.md").must.exist();

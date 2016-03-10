@@ -1,3 +1,3 @@
 module.exports = {
-  "default": require("./lib/Generator.js").default
+  "default": require("./lib/Generator").default
 };

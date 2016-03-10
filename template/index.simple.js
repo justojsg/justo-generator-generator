@@ -1,1 +1,1 @@
-module.exports = require("./lib/Generator.js").default;
+module.exports = require("./lib/Generator").default;

@@ -20,9 +20,6 @@ export default class extends HandlebarsGenerator {
        desc: "",
        params: {
 
-       },
-       commands: {
-
        }
      };
    }
@@ -52,7 +49,7 @@ export default class extends HandlebarsGenerator {
    * @override
    */
   pregenerate(answers) {
-    
+
   }
 
   /**

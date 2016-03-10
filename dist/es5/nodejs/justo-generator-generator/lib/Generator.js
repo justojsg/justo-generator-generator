@@ -39,9 +39,6 @@
 
 
 
-
-
-
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -105,4 +102,4 @@
         this.template("test/unit/index.composite.js", "index.js");}
 
 
-      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", desc: "The generator description.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL.", git: "Use Git: 'true' or 'false'.", gitUrl: "Git URL.", bugs: "Configure bugs: 'true' or 'false'.", bugsUrl: "Bugs homepage.", bugsEmail: "Bugs email." }, commands: { "add generator": "Add a generator." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", desc: "The generator description.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL.", git: "Use Git: 'true' or 'false'.", gitUrl: "Git URL.", bugs: "Configure bugs: 'true' or 'false'.", bugsUrl: "Bugs homepage.", bugsEmail: "Bugs email." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

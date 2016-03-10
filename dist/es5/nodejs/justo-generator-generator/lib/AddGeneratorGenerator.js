@@ -28,9 +28,6 @@
 
 
 
-
-
-
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -60,4 +57,4 @@
 
 
       this.copy("lib/Generator.js", name + ".js");
-      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { name: "Generator name." }, commands: {} };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { name: "Generator name." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
