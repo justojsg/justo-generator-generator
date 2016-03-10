@@ -53,7 +53,7 @@
       var name;
 
 
-      name = answers.name.replace(/(^[a-z])|( [a-z])/g, function (letter) {return letter.toUpperCase();}).replace(" ", "") + "Generator";
+      name = answers.name.replace(/(^[a-z])|(-?[a-z])/g, function (letter) {return letter.toUpperCase();}).replace(/[ -]/, "") + "Generator";
 
 
       this.copy("lib/Generator.js", name + ".js");

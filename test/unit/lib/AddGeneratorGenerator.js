@@ -42,5 +42,11 @@ suite("Generator", function() {
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
+
+    test("generate(answers) - name:'several-words'", function() {
+      gen.generate({name: "one-two"});
+      file(DST, "lib", "OneTwoGenerator.js").must.exist();
+      file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
+    });
   });
 })();
