@@ -32,7 +32,7 @@ suite("Generator", function() {
     });
 
     test("generate(answers) - type:simple", function() {
-      gen.generate({type: "simple"});
+      gen.generate({type: "simple", desc: "The description."});
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
@@ -46,13 +46,14 @@ suite("Generator", function() {
       file(DST.path, "README.md").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
+      file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
       dir(DST.path, "test/unit/data").must.exist();
       file(DST.path, "test/unit/index.js").must.exist();
       file(DST.path, "test/unit/lib/Generator.js").must.exist();
     });
 
     test("generate(answers) - type:composite", function() {
-      gen.generate({type: "composite"});
+      gen.generate({type: "composite", desc: "The description."});
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
@@ -66,6 +67,7 @@ suite("Generator", function() {
       file(DST.path, "README.md").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
+      file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
       dir(DST.path, "test/unit/data").must.exist();
       file(DST.path, "test/unit/index.js").must.exist();
       file(DST.path, "test/unit/lib/Generator.js").must.exist();

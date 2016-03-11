@@ -17,7 +17,7 @@ export default class extends HandlebarsGenerator {
    */
    get help() {
      return {
-       desc: "",
+       desc: "{{scope.desc}}",
        params: {
 
        }

@@ -32,20 +32,23 @@ suite("Generator", function() {
     });
 
     test("generate(answers) - name:'word'", function() {
-      gen.generate({name: "word"});
+      gen.generate({name: "word", desc: "The description."});
       file(DST, "lib", "WordGenerator.js").must.exist();
+      file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
 
     test("generate(answers) - name:'several words'", function() {
-      gen.generate({name: "one two"});
+      gen.generate({name: "one two", desc: "The description."});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
+      file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
 
     test("generate(answers) - name:'several-words'", function() {
-      gen.generate({name: "one-two"});
+      gen.generate({name: "one-two", desc: "The description."});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
+      file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
   });

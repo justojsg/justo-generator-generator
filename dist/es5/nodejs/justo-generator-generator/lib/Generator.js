@@ -93,7 +93,7 @@
       this.copy("Justo.json");
       this.template("README.md", answers);
       this.mkdir("template");
-      this.copy("lib/Generator.js");
+      this.template("lib/Generator.js", answers);
       this.template("test/unit/lib/Generator.js");
 
       if (answers.type == "simple" || answers.type === undefined) {

@@ -28,6 +28,7 @@
 
 
 
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -43,7 +44,8 @@
 
 
     answers) {
-      this.input({ name: "name", title: "Generator name" });} }, { key: "generate", value: function generate(
+      this.input({ name: "name", title: "Generator name" });
+      this.input({ name: "desc", title: "Generator description" });} }, { key: "generate", value: function generate(
 
 
 
@@ -56,5 +58,5 @@
       name = answers.name.replace(/(^[a-z])|(-[a-z])/g, function (letter) {return letter.toUpperCase();}).replace(/[ -]/, "") + "Generator";
 
 
-      this.copy("lib/Generator.js", name + ".js");
-      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { name: "Generator name." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.template("lib/Generator.js", name + ".js", answers);
+      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { name: "Generator name.", desc: "Generator description." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
