@@ -6,6 +6,7 @@ const copy = require("justo-plugin-fs").copy;
 const clean = require("justo-plugin-fs").clean;
 const jshint = require("justo-plugin-jshint");
 const publish = require("justo-plugin-npm").publish;
+const install = require("justo-plugin-npm").install;
 
 //catalog
 catalog.workflow({name: "build", desc: "Build the package"}, function() {
@@ -58,6 +59,13 @@ catalog.workflow({name: "publish", desc: "NPM publish."}, function() {
   publish("Publish in NPM", {
     who: "{{scope.npmWho}}",
     src: "dist/es5/nodejs/{{dir.name}}/"
+  });
+});
+
+catalog.workflow({name: "install", desc: "Install the generator to test."}, function() {
+  install("Install", {
+    pkg: "dist/es5/nodejs/{{dir.name}}/",
+    global: true
   });
 });
 
