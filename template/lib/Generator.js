@@ -15,13 +15,15 @@ export default class extends HandlebarsGenerator {
   /**
    * @override
    */
-   get help() {
-     return {
-       desc: "{{scope.desc}}",
-       params: {
+  get desc() {
+    return "{{scope.desc}}";
+  }
 
-       }
-     };
+  /**
+   * @override
+   */
+   get params() {
+     return {};
    }
 
   /**

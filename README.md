@@ -9,25 +9,3 @@ Generator for a `Justo.js` generator scaffold.
 ```
 npm install -g justo-generator-generator
 ```
-
-## Parameters
-
-To list the parameters:
-
-```
-justo -g generator help
-```
-
-Example:
-
-```
-justo -g generator type:simple
-```
-
-## Commands
-
-To list the commands:
-
-```
-justo -g generator help
-```

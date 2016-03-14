@@ -39,6 +39,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -54,21 +67,17 @@
 
 
     answers) {
-      this.input({ name: "desc", title: "Generator description" });
-      this.input({ name: "homepage", title: "Generator homepage" });
-      this.list({ name: "type", title: "Generator type", choices: ["simple", "composite"] });
-      this.input({ name: "author", title: "Author name" });
-      this.input({ name: "authorEmail", title: "Author email" });
-      this.input({ name: "authorUrl", title: "Author homepage" });
-      this.input({ name: "npmWho", title: "NPM username" });
-
-      if (this.confirm({ name: "git", title: "Would you like to configure Git repository?", default: true })) {
-        this.input({ name: "gitUrl", title: "  Git URL" });}
-
-
-      if (this.confirm({ name: "bugs", title: "Would you like to configure bugs info?", default: true })) {
-        this.input({ name: "bugsUrl", title: "  Bugs homepage" });
-        this.input({ name: "bugsEmail", title: "  Bugs email" });}} }, { key: "generate", value: function generate(
+      this.input({ name: "desc" });
+      this.input({ name: "homepage" });
+      this.list({ name: "type" });
+      this.input({ name: "author" });
+      this.input({ name: "authorEmail" });
+      this.input({ name: "authorUrl" });
+      this.input({ name: "npmWho" });
+      if (this.confirm({ name: "git", default: true })) this.input({ name: "gitUrl" });
+      if (this.confirm({ name: "bugs", default: true })) {
+        this.input({ name: "bugsUrl" });
+        this.input({ name: "bugsEmail" });}} }, { key: "generate", value: function generate(
 
 
 
@@ -102,4 +111,4 @@
         this.template("test/unit/index.composite.js", "index.js");}
 
 
-      this.mkdir("test/unit/data");} }, { key: "help", get: function get() {return { desc: "Generate a Justo.js generator scaffold.", params: { type: "Generator type: 'simple' or 'composite'.", npmWho: "The NPM user to use for publishing.", homepage: "The project homepage.", desc: "The generator description.", author: "The author name.", authorEmail: "The author email.", authorUrl: "The author URL.", git: "Use Git: 'true' or 'false'.", gitUrl: "Git URL.", bugs: "Configure bugs: 'true' or 'false'.", bugsUrl: "Bugs homepage.", bugsEmail: "Bugs email." } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", git: { title: "Would you like to configure Git repository?", type: "Boolean" }, gitUrl: "Git URL", bugs: { title: "Would you like to configure bugs info?", type: "Boolean" }, bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
