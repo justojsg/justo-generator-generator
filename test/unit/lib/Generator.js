@@ -24,7 +24,7 @@ suite("Generator", function() {
 
     init("*", function() {
       DST = Dir.createTmpDir();
-      gen = new Generator({src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST.path}, {});
+      gen = new Generator({mute: true, src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST.path}, {});
     });
 
     fin("*", function() {

@@ -24,7 +24,7 @@ suite("Generator", function() {
     init("*", function() {
       DST_DIR = Dir.createTmpDir();
       DST = DST_DIR.path;
-      gen = new Generator({src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST}, {});
+      gen = new Generator({mute: true, src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST}, {});
     });
 
     fin("*", function() {
@@ -32,24 +32,40 @@ suite("Generator", function() {
     });
 
     test("generate(answers) - name:'word'", function() {
-      gen.generate({name: "word", desc: "The description."});
+      gen.generate({name: "word", desc: "The description.", snippet: false});
       file(DST, "lib", "WordGenerator.js").must.exist();
       file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
 
     test("generate(answers) - name:'several words'", function() {
-      gen.generate({name: "one two", desc: "The description."});
+      gen.generate({name: "one two", desc: "The description.", snippet: false});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
       file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
 
     test("generate(answers) - name:'several-words'", function() {
-      gen.generate({name: "one-two", desc: "The description."});
+      gen.generate({name: "one-two", desc: "The description.", snippet: false});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
       file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
+    });
+
+    test("generate(answers) - snippet generator", function() {
+      gen.generate({name: "word", desc: "The description.", snippet: true});
+      file(DST, "lib", "WordGenerator.js").must.exist();
+      file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
+      file(DST, "lib", "WordGenerator.js").text.must.contain("mute: true");
+      file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
+    });
+
+    test("generate(answers) - file generator", function() {
+      gen.generate({name: "word", desc: "The description.", snippet: false});
+      file(DST, "lib", "WordGenerator.js").must.exist();
+      file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
+      file(DST, "lib", "WordGenerator.js").text.must.not.contain("mute: true");
+      file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
   });
 })();
