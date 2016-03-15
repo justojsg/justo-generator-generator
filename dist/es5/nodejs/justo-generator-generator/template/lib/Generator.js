@@ -10,7 +10,7 @@ export default class extends HandlebarsGenerator {
    */
   constructor(opts, responses) {
     {{#if scope.snippet}}
-    super(Object.assign({mute: true}, opts), responses);
+    super(Object.assign({}, opts, {mute: true}), responses);
     {{else}}
     super(opts, responses);
     {{/if}}
