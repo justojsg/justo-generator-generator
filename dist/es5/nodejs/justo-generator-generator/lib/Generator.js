@@ -56,6 +56,9 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
 
 
 
+
+
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -74,10 +77,13 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
       this.input({ name: "desc" });
       this.input({ name: "homepage" });
       this.list({ name: "type" });
-      this.confirm({ name: "snippet" });
+      this.confirm({ name: "snippet", default: false });
       this.input({ name: "author" });
       this.input({ name: "authorEmail" });
       this.input({ name: "authorUrl" });
+      this.input({ name: "contributor" });
+      this.input({ name: "contributorEmail" });
+      this.input({ name: "contributorUrl" });
       this.input({ name: "npmWho" });
       if (this.confirm({ name: "git", default: true })) this.input({ name: "gitUrl" });
       if (this.confirm({ name: "bugs", default: true })) {
@@ -116,4 +122,4 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
         this.template("test/unit/index.composite.js", "index.js");}
 
 
-      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Snippet generator?", type: "boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", git: { title: "Would you like to configure Git repository?", type: "Boolean" }, gitUrl: "Git URL", bugs: { title: "Would you like to configure bugs info?", type: "Boolean" }, bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Default generator is snippet generator?", type: "boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", git: { title: "Would you like to configure Git repository?", type: "Boolean" }, gitUrl: "Git URL", bugs: { title: "Would you like to configure bugs info?", type: "Boolean" }, bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

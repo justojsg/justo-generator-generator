@@ -5,17 +5,15 @@ import {HandlebarsGenerator} from "justo-generator";
  * Generator.
  */
 export default class extends HandlebarsGenerator {
+  {{#if scope.snippet}}
   /**
    * Constructor.
    */
   constructor(opts, responses) {
-    {{#if scope.snippet}}
     super(Object.assign({}, opts, {mute: true}), responses);
-    {{else}}
-    super(opts, responses);
-    {{/if}}
   }
-
+  
+  {{/if}}
   /**
    * @override
    */

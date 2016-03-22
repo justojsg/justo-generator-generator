@@ -54,7 +54,7 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
     answers) {
       this.input({ name: "name" });
       this.input({ name: "desc" });
-      this.confirm({ name: "snippet" });} }, { key: "generate", value: function generate(
+      this.confirm({ name: "snippet", default: false });} }, { key: "generate", value: function generate(
 
 
 
