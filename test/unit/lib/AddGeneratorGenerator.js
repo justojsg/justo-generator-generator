@@ -1,5 +1,6 @@
 //imports
 const path = require("path");
+const File = require("justo-fs").File;
 const Dir = require("justo-fs").Dir;
 const file = require("justo-assert-fs").file;
 const dir = require("justo-assert-fs").dir;
@@ -27,6 +28,11 @@ suite("Generator", function() {
       gen = new Generator({mute: true, src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST}, {});
     });
 
+    init("*", function() {
+      new File("test/unit/data", "index.js").copyTo(DST, "index.js");
+      new File("test/unit/data", "test/unit/index.js").copyTo(DST, "test/unit/index.js");
+    });
+
     fin("*", function() {
       DST_DIR.remove();
     });
@@ -35,6 +41,8 @@ suite("Generator", function() {
       gen.generate({name: "word", desc: "The description.", snippet: false});
       file(DST, "lib", "WordGenerator.js").must.exist();
       file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
+      file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
 
@@ -42,6 +50,8 @@ suite("Generator", function() {
       gen.generate({name: "one two", desc: "The description.", snippet: false});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
       file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
+      file(DST, "index.js").must.contain("\"one two\": require(\"./lib/OneTwoGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"one two\", function()");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
 
@@ -49,6 +59,8 @@ suite("Generator", function() {
       gen.generate({name: "one-two", desc: "The description.", snippet: false});
       file(DST, "lib", "OneTwoGenerator.js").must.exist();
       file(DST, "lib", "OneTwoGenerator.js").text.must.contain("\"The description.\"");
+      file(DST, "index.js").must.contain("\"one-two\": require(\"./lib/OneTwoGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"one-two\", function()");
       file(DST, "test/unit/lib", "OneTwoGenerator.js").must.exist();
     });
 
@@ -57,6 +69,8 @@ suite("Generator", function() {
       file(DST, "lib", "WordGenerator.js").must.exist();
       file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "lib", "WordGenerator.js").text.must.contain("mute: true");
+      file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
 
@@ -65,6 +79,8 @@ suite("Generator", function() {
       file(DST, "lib", "WordGenerator.js").must.exist();
       file(DST, "lib", "WordGenerator.js").text.must.contain("\"The description.\"");
       file(DST, "lib", "WordGenerator.js").text.must.not.contain("mute: true");
+      file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib", "WordGenerator.js").must.exist();
     });
   });

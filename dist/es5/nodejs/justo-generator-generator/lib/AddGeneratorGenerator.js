@@ -68,4 +68,6 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
 
 
       this.template("lib/Generator.js", name + ".js", answers);
-      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { name: "Generator name", desc: "Generator description", snippet: { title: "Snippet generator?", type: "Boolean" } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });
+      this.append("index.js", ",\n  \"" + answers.name + "\": require(\"./lib/" + name + "\").default", { line: -3, type: "end" });
+      this.append("test/unit/index.js", "\n  test(\"" + answers.name + "\", function() {\n    pkg[\"" + answers.name + "\"].must.be.instanceOf(Function);\n  });\n", { line: -2 });} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { name: "Generator name", desc: "Generator description", snippet: { title: "Snippet generator?", type: "Boolean" } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
