@@ -1,6 +1,6 @@
 {
   "name": "justo-generator-generator",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Generator for a Justo.js generator.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -33,6 +33,7 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
+    "justo-fs": "*",
     "justo-generator": "*"
   },
   "peerDependencies": {},
@@ -41,7 +42,6 @@
     "justo": "*",
     "justo-assert": "*",
     "justo-assert-fs": "*",
-    "justo-fs": "*",
     "justo-plugin-babel": "*",
     "justo-plugin-fs": "*",
     "justo-plugin-jshint": "*",

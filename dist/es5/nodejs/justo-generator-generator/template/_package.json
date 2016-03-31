@@ -33,7 +33,8 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
-    "justo-generator": "*"
+    "justo-generator": "*",
+    "justo-fs": "*"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -41,7 +42,6 @@
     "justo": "*",
     "justo-assert": "*",
     "justo-assert-fs": "*",
-    "justo-fs": "*",
     "justo-plugin-babel": "*",
     "justo-plugin-fs": "*",
     "justo-plugin-jshint": "*",

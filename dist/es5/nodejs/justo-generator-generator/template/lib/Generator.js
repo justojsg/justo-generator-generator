@@ -1,4 +1,7 @@
 //import
+{{#if scope.checkDstDir}}
+import * as fs from "justo-fs";
+{{/if}}
 import {HandlebarsGenerator} from "justo-generator";
 
 /**
@@ -12,7 +15,7 @@ export default class extends HandlebarsGenerator {
   constructor(opts, responses) {
     super(Object.assign({}, opts, {mute: true}), responses);
   }
-  
+
   {{/if}}
   /**
    * @override
@@ -40,6 +43,15 @@ export default class extends HandlebarsGenerator {
    */
   fin() {
     super.fin();
+  }
+
+  /**
+   * @override
+   */
+  preprompt() {
+    {{#if scope.checkDstDir}}
+    if ((new fs.Dir(this.dst)).hasEntries()) return "Destination dir is not empty.";
+    {{/if}}
   }
 
   /**
