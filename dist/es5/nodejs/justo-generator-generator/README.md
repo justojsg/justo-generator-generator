@@ -9,3 +9,7 @@ Generator for a `Justo.js` generator scaffold.
 ```
 npm install -g justo-generator-generator
 ```
+
+## Note
+
+The directory must be empty or it can have `.git` and `README.md`.

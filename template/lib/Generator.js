@@ -50,7 +50,14 @@ export default class extends HandlebarsGenerator {
    */
   preprompt() {
     {{#if scope.checkDstDir}}
-    if ((new fs.Dir(this.dst)).hasEntries()) return "Destination dir is not empty.";
+    var entries = this.getEntryNames(".").sort();
+
+    if (!(entries.length === 0 ||
+          (entries.length == 1 && entries[0] == ".git") ||
+          (entries.length == 2 && entries[0] == ".git" && entries[1] == "README.md")
+         )) {
+      return "Destination dir is not empty.";
+    }
     {{/if}}
   }
 

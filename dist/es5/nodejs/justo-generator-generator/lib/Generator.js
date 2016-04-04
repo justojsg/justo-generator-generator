@@ -78,7 +78,14 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
 
 
     {
-      if (new fs.Dir(this.dst).hasEntries()) return "Destination dir is not empty.";} }, { key: "prompt", value: function prompt(
+      var entries = this.getEntryNames(".").sort();
+
+      if (!(entries.length === 0 || 
+      entries.length == 1 && entries[0] == ".git" || 
+      entries.length == 2 && entries[0] == ".git" && entries[1] == "README.md")) 
+      {
+        return "Destination dir is not empty.";}} }, { key: "prompt", value: function prompt(
+
 
 
 
