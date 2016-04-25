@@ -21,13 +21,13 @@ suite("Generator", function() {
   suite("#generate()", function() {
     var gen, DST_DIR, DST;
 
-    init("*", function() {
+    init({name: "*", title: "Create tmp dir and generator"}, function() {
       DST_DIR = Dir.createTmpDir();
       DST = DST_DIR.path;
       gen = new Generator({mute: true, src: "dist/es5/nodejs/{{dir.name}}/template", dst: DST}, {});
     });
 
-    fin("*", function() {
+    fin({name: "*", title: "Delete tmp dir"}, function() {
       DST_DIR.remove();
     });
 

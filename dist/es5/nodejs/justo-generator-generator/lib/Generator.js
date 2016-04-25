@@ -57,12 +57,6 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
 
 
 
-
-
-
-
-
-
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -103,11 +97,13 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
       this.input("contributorEmail");
       this.input("contributorUrl");
       this.input("npmWho");
-      if (this.confirm({ name: "git", default: true })) this.input("gitUrl");
-      if (this.confirm({ name: "bugs", default: true })) {
-        this.input("bugsUrl");
-        this.input("bugsEmail");}} }, { key: "pregenerate", value: function pregenerate(
+      if (this.input("gitUrl")) {
+        var re = /http[s]:\/\/github\.com\/([^\/]+\/[^\/]+).git/;
+        this.input({ name: "travisCi", default: "https://travis-ci.org/" + re.exec(answers.gitUrl)[1] });
+        this.input({ name: "davidDm", default: "https://david-dm.org/" + re.exec(answers.gitUrl)[1] });}
 
+      this.input("bugsUrl");
+      this.input("bugsEmail");} }, { key: "pregenerate", value: function pregenerate(
 
 
 
@@ -147,4 +143,4 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
         this.template("test/unit/index.composite.js", "index.js");}
 
 
-      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Default generator is snippet generator?", type: "boolean" }, checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", git: { title: "Would you like to configure Git repository?", type: "Boolean" }, gitUrl: "Git URL", bugs: { title: "Would you like to configure bugs info?", type: "Boolean" }, bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Default generator is snippet generator?", type: "boolean" }, checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", gitUrl: "Git URL", travisCi: "Travis CI", davidDm: "David DM", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

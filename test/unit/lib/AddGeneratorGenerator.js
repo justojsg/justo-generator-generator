@@ -22,18 +22,18 @@ suite("Generator", function() {
   suite("#generate()", function() {
     var gen, DST_DIR, DST;
 
-    init("*", function() {
+    init({name: "*", title: "Create tmp dir and generator"}, function() {
       DST_DIR = Dir.createTmpDir();
       DST = DST_DIR.path;
       gen = new Generator({mute: true, src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST}, {});
     });
 
-    init("*", function() {
+    init({name: "*", title: "Copy data"}, function() {
       new File("test/unit/data", "index.js").copyTo(DST, "index.js");
       new File("test/unit/data", "test/unit/index.js").copyTo(DST, "test/unit/index.js");
     });
 
-    fin("*", function() {
+    fin({name: "*", title: "Delete tmp dir"}, function() {
       DST_DIR.remove();
     });
 

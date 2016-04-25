@@ -22,12 +22,12 @@ suite("Generator", function() {
   suite("#generate()", function() {
     var gen, DST;
 
-    init("*", function() {
+    init({name: "*", title: "Create tmp dir and generator"}, function() {
       DST = Dir.createTmpDir();
       gen = new Generator({mute: true, src: "dist/es5/nodejs/justo-generator-generator/template", dst: DST.path}, {});
     });
 
-    fin("*", function() {
+    fin({name: "*", title: "Delete tmp dir"}, function() {
       DST.remove();
     });
 

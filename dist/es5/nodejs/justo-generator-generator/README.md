@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/justojsg/justo-generator-generator.svg?branch=master)](https://travis-ci.org/justojsg/justo-generator-generator)
+[![Dependency Status](https://david-dm.org/justojsg/justo-generator-generator.svg)](https://david-dm.org/justojsg/justo-generator-generator)
+[![devDependency Status](https://david-dm.org/justojsg/justo-generator-generator/dev-status.svg)](https://david-dm.org/justojsg/justo-generator-generator#info=devDependencies)
 
 Generator for a `Justo.js` generator scaffold.
 
