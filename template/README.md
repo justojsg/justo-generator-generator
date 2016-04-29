@@ -1,3 +1,4 @@
+[![NPM version](http://img.shields.io/npm/v/{{dir.name}}.svg)](https://www.npmjs.org/package/{{dir.name}})
 {{#if scope.travisCi}}
 [![Build Status]({{scope.travisCi}}.svg?branch=master)]({{scope.travisCi}})
 {{/if}}
