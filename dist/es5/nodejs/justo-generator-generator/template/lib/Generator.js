@@ -21,7 +21,7 @@ export default class extends HandlebarsGenerator {
    * @override
    */
   get desc() {
-    return "{{scope.desc}}";
+    return "{{{scope.desc}}}";
   }
 
   /**

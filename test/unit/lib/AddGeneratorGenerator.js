@@ -64,6 +64,15 @@ suite("Generator", function() {
       file(DST, "test/unit/lib/OneTwoGenerator.js").must.exist();
     });
 
+    test("generate(answers) - desc is not escaped as HTML code", function() {
+      gen.generate({name: "word", desc: "Generate <input type='text'>.", snippet: false});
+      file(DST, "lib/WordGenerator.js").must.exist();
+      file(DST, "lib/WordGenerator.js").must.contain("\"Generate <input type='text'>.\"");
+      file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
+      file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
+      file(DST, "test/unit/lib/WordGenerator.js").must.exist();
+    });
+
     test("generate(answers) - snippet generator", function() {
       gen.generate({name: "word", desc: "The description.", snippet: true, snippetTemplate: "mysnippet"});
       file(DST, "lib/WordGenerator.js").must.exist();
