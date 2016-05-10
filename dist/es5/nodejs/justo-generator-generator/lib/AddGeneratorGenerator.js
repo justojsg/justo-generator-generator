@@ -58,7 +58,7 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
     answers) {
       this.input({ name: "name" });
       this.input({ name: "desc" });
-      if (this.confirm({ name: "snippet", default: false })) this.input("snippetTemplate");else 
+      if (this.confirm({ name: "snippet", default: answers.name.startsWith("snippet") })) this.input("snippetTemplate");else 
       this.confirm("checkDstDir");} }, { key: "generate", value: function generate(
 
 

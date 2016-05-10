@@ -12,4 +12,8 @@ suite("index", function() {
   test("add generator", function() {
     Generator["add generator"].must.be.instanceOf(Function);
   });
+
+  test("add gen", function() {
+    Generator["add gen"].must.be.same(Generator["add generator"]);
+  });
 })();
