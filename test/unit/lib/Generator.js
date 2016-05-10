@@ -76,5 +76,30 @@ suite("Generator", function() {
     test("generate(answers) - type:unknown", function() {
       gen.generate.bind(gen).must.raise("Invalid generator type: unknown.", [{type: "unknown"}]);
     });
+
+    test("generate(answers) - snippet generator", function() {
+      gen.generate({type: "composite", desc: "The description.", snippet: true, snippetTemplate: "mysnippet"});
+
+      file(DST.path, ".editorconfig").must.exist();
+      file(DST.path, ".gitignore").must.exist();
+      file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".travis.yml").must.exist();
+      file(DST.path, "package.json").must.exist();
+      file(DST.path, "index.js").must.exist();
+      file(DST.path, "index.js").text.must.contain("module.exports = {");
+      file(DST.path, "Justo.js").must.exist();
+      file(DST.path, "Justo.json").must.exist();
+      file(DST.path, "README.md").must.exist();
+      dir(DST.path, "template").must.exist();
+      file(DST.path, "lib/Generator.js").must.exist();
+      file(DST.path, "lib/Generator.js").must.contain([
+        "\"The description.\"",
+        "mute: true",
+        "return this.templateAsString(\"snippets/mysnippet.hbs\", answers);"
+      ]);
+      dir(DST.path, "test/unit/data").must.exist();
+      file(DST.path, "test/unit/index.js").must.exist();
+      file(DST.path, "test/unit/lib/Generator.js").must.exist();
+    });
   });
 })();

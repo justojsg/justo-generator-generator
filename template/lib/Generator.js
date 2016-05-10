@@ -79,6 +79,8 @@ export default class extends HandlebarsGenerator {
    * @override
    */
   generate(answers) {
-
+    {{#if scope.snippet}}
+    return this.templateAsString("snippets/{{scope.snippetTemplate}}.hbs", answers);
+    {{/if}}
   }
 }

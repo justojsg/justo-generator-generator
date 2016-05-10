@@ -57,6 +57,7 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
 
 
 
+
     {
       _get(Object.getPrototypeOf(_class.prototype), "init", this).call(this);} }, { key: "fin", value: function fin() 
 
@@ -89,7 +90,8 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
       this.input("desc");
       this.input("homepage");
       this.list("type");
-      if (!this.confirm({ name: "snippet", default: false })) this.confirm("checkDstDir");
+      if (this.confirm({ name: "snippet", default: false })) this.input("snippetTemplate");else 
+      this.confirm("checkDstDir");
       this.input("author");
       this.input("authorEmail");
       this.input("authorUrl");
@@ -134,6 +136,7 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
       this.copy("Justo.json");
       this.template("README.md", answers);
       this.mkdir("template");
+      if (answers.snippet) this.copy("template/snippets/snippet.hbs", answers.snippetTemplate + ".hbs");
       this.template("lib/Generator.js", answers);
       this.template("test/unit/lib/Generator.js");
 
@@ -143,4 +146,4 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
         this.template("test/unit/index.composite.js", "index.js");}
 
 
-      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Default generator is snippet generator?", type: "boolean" }, checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", gitUrl: "Git URL", travisCi: "Travis CI", davidDm: "David DM", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+      this.mkdir("test/unit/data");} }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { type: { title: "Generator type", choices: ["simple", "composite"] }, snippet: { title: "Default generator is snippet generator?", type: "boolean" }, snippetTemplate: "Snippet template", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, npmWho: "NPM username", homepage: "Generator homepage", desc: "Generator description", author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", gitUrl: "Git URL", travisCi: "Travis CI", davidDm: "David DM", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email" };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

@@ -65,20 +65,28 @@ suite("Generator", function() {
     });
 
     test("generate(answers) - snippet generator", function() {
-      gen.generate({name: "word", desc: "The description.", snippet: true});
+      gen.generate({name: "word", desc: "The description.", snippet: true, snippetTemplate: "mysnippet"});
       file(DST, "lib/WordGenerator.js").must.exist();
-      file(DST, "lib/WordGenerator.js").must.contain(["\"The description.\"", "mute: true"]);
+      file(DST, "lib/WordGenerator.js").must.contain([
+        "\"The description.\"",
+        "mute: true",
+        "return this.templateAsString(\"snippets/mysnippet.hbs\", answers);"
+      ]);
       file(DST, "lib/WordGenerator.js").must.not.contain("Destination dir is not empty.");
       file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
       file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib/WordGenerator.js").must.exist();
+      file(DST, "template/snippets/mysnippet.hbs").must.exist();
     });
 
     test("generate(answers) - file generator", function() {
       gen.generate({name: "word", desc: "The description.", snippet: false, checkDstDir: true});
       file(DST, "lib/WordGenerator.js").must.exist();
       file(DST, "lib/WordGenerator.js").must.contain(["\"The description.\"", "Destination dir is not empty."]);
-      file(DST, "lib/WordGenerator.js").must.not.contain("mute: true");
+      file(DST, "lib/WordGenerator.js").must.not.contain([
+        "mute: true",
+        "return this.templateAsString(\"snippets/mysnippet.hbs\", answers);"
+      ]);
       file(DST, "index.js").must.contain("\"word\": require(\"./lib/WordGenerator\").default");
       file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib/WordGenerator.js").must.exist();
