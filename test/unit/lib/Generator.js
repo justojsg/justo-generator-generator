@@ -42,7 +42,6 @@ suite("Generator", function() {
       file(DST.path, "index.js").must.exist();
       file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
       file(DST.path, "Justo.js").must.exist();
-      file(DST.path, "Justo.json").must.exist();
       file(DST.path, "README.md").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
@@ -63,7 +62,6 @@ suite("Generator", function() {
       file(DST.path, "index.js").must.exist();
       file(DST.path, "index.js").text.must.contain("module.exports = {");
       file(DST.path, "Justo.js").must.exist();
-      file(DST.path, "Justo.json").must.exist();
       file(DST.path, "README.md").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
@@ -88,7 +86,6 @@ suite("Generator", function() {
       file(DST.path, "index.js").must.exist();
       file(DST.path, "index.js").text.must.contain("module.exports = {");
       file(DST.path, "Justo.js").must.exist();
-      file(DST.path, "Justo.json").must.exist();
       file(DST.path, "README.md").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();

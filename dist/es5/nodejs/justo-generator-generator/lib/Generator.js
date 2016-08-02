@@ -133,7 +133,6 @@ var _justoGenerator = require("justo-generator");function _interopRequireWildcar
       this.copy("_travis.yml", ".travis.yml");
       this.template("_package.json", "package.json", answers);
       this.template("Justo.js", answers);
-      this.copy("Justo.json");
       this.template("README.md", answers);
       this.mkdir("template");
       if (answers.snippet) this.copy("template/snippets/snippet.hbs", answers.snippetTemplate + ".hbs");

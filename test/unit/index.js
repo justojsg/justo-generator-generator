@@ -9,11 +9,11 @@ suite("index", function() {
     Generator.default.must.be.instanceOf(Function);
   });
 
-  test("add generator", function() {
-    Generator["add generator"].must.be.instanceOf(Function);
+  test("generator", function() {
+    Generator["generator"].must.be.instanceOf(Function);
   });
 
-  test("add gen", function() {
-    Generator["add gen"].must.be.same(Generator["add generator"]);
+  test("gen", function() {
+    Generator["gen"].must.be.same(Generator["generator"]);
   });
 })();
