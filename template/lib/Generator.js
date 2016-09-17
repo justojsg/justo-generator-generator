@@ -27,9 +27,9 @@ export default class extends HandlebarsGenerator {
   /**
    * @override
    */
-   get params() {
-     return {};
-   }
+  get params() {
+    return {};
+  }
 
   /**
    * @override

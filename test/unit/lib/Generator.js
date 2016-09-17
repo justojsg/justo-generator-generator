@@ -1,5 +1,4 @@
 //imports
-const path = require("path");
 const Dir = require("justo-fs").Dir;
 const file = require("justo-assert-fs").file;
 const dir = require("justo-assert-fs").dir;
@@ -36,7 +35,8 @@ suite("Generator", function() {
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
-      file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".jshintrc").must.not.exist();
+      file(DST.path, ".eslintrc").must.not.exist();
       file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
@@ -56,7 +56,8 @@ suite("Generator", function() {
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
-      file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".jshintrc").must.not.exist();
+      file(DST.path, ".eslintrc").must.not.exist();
       file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
@@ -80,7 +81,8 @@ suite("Generator", function() {
 
       file(DST.path, ".editorconfig").must.exist();
       file(DST.path, ".gitignore").must.exist();
-      file(DST.path, ".jshintrc").must.exist();
+      file(DST.path, ".jshintrc").must.not.exist();
+      file(DST.path, ".eslintrc").must.not.exist();
       file(DST.path, ".travis.yml").must.exist();
       file(DST.path, "package.json").must.exist();
       file(DST.path, "index.js").must.exist();
@@ -97,6 +99,22 @@ suite("Generator", function() {
       dir(DST.path, "test/unit/data").must.exist();
       file(DST.path, "test/unit/index.js").must.exist();
       file(DST.path, "test/unit/lib/Generator.js").must.exist();
+    });
+
+    suite("Linter", function() {
+      test("ESLint", function() {
+        gen.generate({type: "simple", desc: "The description.", linter: "ESLint"});
+
+        file(DST.path, ".jshintrc").must.not.exist();
+        file(DST.path, ".eslintrc").must.exist();
+      });
+
+      test("JSHint", function() {
+        gen.generate({type: "simple", desc: "The description.", linter: "JSHint"});
+
+        file(DST.path, ".jshintrc").must.exist();
+        file(DST.path, ".eslintrc").must.not.exist();
+      });
     });
   });
 })();
