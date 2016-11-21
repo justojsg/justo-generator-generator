@@ -62,6 +62,11 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
 
 
 
+
+
+
+
+
     {
       _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "init", this).call(this);
     } }, { key: "fin", value: function fin()
@@ -110,6 +115,7 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
       }
       this.input("bugsUrl");
       this.input("bugsEmail");
+      this.list("jsSpec");
       this.list("linter");
     } }, { key: "generate", value: function generate(
 
@@ -145,4 +151,4 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
       }
 
       this.mkdir("test/unit/data");
-    } }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", davidDm: "David DM", desc: "Generator description", gitUrl: "Git URL", homepage: "Generator homepage", linter: { title: "Code linter", choices: ["<none>", "ESLint", "JSHint"], default: "ESLint" }, npmWho: "NPM username", snippet: { title: "Default generator is snippet generator?", type: "boolean" }, snippetTemplate: "Snippet template", travisCi: "Travis CI", type: { title: "Generator type", choices: ["simple", "composite"] } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+    } }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { author: "Author name", authorEmail: "Author email", authorUrl: "Author homepage", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", davidDm: "David DM", desc: "Generator description", gitUrl: "Git URL", homepage: "Generator homepage", jsSpec: { title: "JavaScript spec to use", choices: ["ES2015", "ES2016", "ES2017"], default: "ES2015" }, linter: { title: "Code linter", choices: ["<none>", "ESLint", "JSHint"], default: "ESLint" }, npmWho: "NPM username", snippet: { title: "Default generator is snippet generator?", type: "boolean" }, snippetTemplate: "Snippet template", travisCi: "Travis CI", type: { title: "Generator type", choices: ["simple", "composite"] } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

@@ -101,12 +101,84 @@ suite("Generator", function() {
       file(DST.path, "test/unit/lib/Generator.js").must.exist();
     });
 
+    suite("JSSpec", function() {
+      test("ES2015", function() {
+        gen.generate({type: "simple", desc: "The description.", jsSpec: "ES2015"});
+
+        file(DST.path, ".editorconfig").must.exist();
+        file(DST.path, ".gitignore").must.exist();
+        file(DST.path, ".jshintrc").must.not.exist();
+        file(DST.path, ".eslintrc").must.not.exist();
+        file(DST.path, ".travis.yml").must.exist();
+        file(DST.path, "package.json").must.exist();
+        file(DST.path, "package.json").must.contain("babel-preset-es2015");
+        file(DST.path, "index.js").must.exist();
+        file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
+        file(DST.path, "Justo.js").must.exist();
+        file(DST.path, "README.md").must.exist();
+        dir(DST.path, "template").must.exist();
+        file(DST.path, "lib/Generator.js").must.exist();
+        file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
+        dir(DST.path, "test/unit/data").must.exist();
+        file(DST.path, "test/unit/index.js").must.exist();
+        file(DST.path, "test/unit/lib/Generator.js").must.exist();
+      });
+
+      test("ES2016", function() {
+        gen.generate({type: "simple", desc: "The description.", jsSpec: "ES2016"});
+
+        file(DST.path, ".editorconfig").must.exist();
+        file(DST.path, ".gitignore").must.exist();
+        file(DST.path, ".jshintrc").must.not.exist();
+        file(DST.path, ".eslintrc").must.not.exist();
+        file(DST.path, ".travis.yml").must.exist();
+        file(DST.path, "package.json").must.exist();
+        file(DST.path, "package.json").must.contain("babel-preset-es2016");
+        file(DST.path, "index.js").must.exist();
+        file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
+        file(DST.path, "Justo.js").must.exist();
+        file(DST.path, "README.md").must.exist();
+        dir(DST.path, "template").must.exist();
+        file(DST.path, "lib/Generator.js").must.exist();
+        file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
+        dir(DST.path, "test/unit/data").must.exist();
+        file(DST.path, "test/unit/index.js").must.exist();
+        file(DST.path, "test/unit/lib/Generator.js").must.exist();
+      });
+
+      test("ES2017", function() {
+        gen.generate({type: "simple", desc: "The description.", jsSpec: "ES2017"});
+
+        file(DST.path, ".editorconfig").must.exist();
+        file(DST.path, ".gitignore").must.exist();
+        file(DST.path, ".jshintrc").must.not.exist();
+        file(DST.path, ".eslintrc").must.not.exist();
+        file(DST.path, ".travis.yml").must.exist();
+        file(DST.path, "package.json").must.exist();
+        file(DST.path, "package.json").must.contain("babel-preset-es2017");
+        file(DST.path, "index.js").must.exist();
+        file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
+        file(DST.path, "Justo.js").must.exist();
+        file(DST.path, "README.md").must.exist();
+        dir(DST.path, "template").must.exist();
+        file(DST.path, "lib/Generator.js").must.exist();
+        file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
+        dir(DST.path, "test/unit/data").must.exist();
+        file(DST.path, "test/unit/index.js").must.exist();
+        file(DST.path, "test/unit/lib/Generator.js").must.exist();
+      });
+    });
+
     suite("Linter", function() {
       test("ESLint", function() {
         gen.generate({type: "simple", desc: "The description.", linter: "ESLint"});
 
         file(DST.path, ".jshintrc").must.not.exist();
         file(DST.path, ".eslintrc").must.exist();
+        file(DST.path, "package.json").must.contain("justo-plugin-eslint");
+        file(DST.path, "package.json").must.not.contain("justo-plugin-jshint");
+        file(DST.path, "Justo.js").must.contain("justo-plugin-eslint");
+        file(DST.path, "Justo.js").must.not.contain("justo-plugin-jshint");
       });
 
       test("JSHint", function() {
@@ -114,6 +186,10 @@ suite("Generator", function() {
 
         file(DST.path, ".jshintrc").must.exist();
         file(DST.path, ".eslintrc").must.not.exist();
+        file(DST.path, "package.json").must.contain("justo-plugin-jshint");
+        file(DST.path, "package.json").must.not.contain("justo-plugin-eslint");
+        file(DST.path, "Justo.js").must.contain("justo-plugin-jshint");
+        file(DST.path, "Justo.js").must.not.contain("justo-plugin-eslint");
       });
     });
   });

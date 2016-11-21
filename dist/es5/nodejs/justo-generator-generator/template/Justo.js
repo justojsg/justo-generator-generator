@@ -4,17 +4,17 @@ const catalog = justo.catalog;
 const babel = require("justo-plugin-babel");
 const copy = require("justo-plugin-fs").copy;
 const clean = require("justo-plugin-fs").clean;
-const jshint = require("justo-plugin-jshint");
+{{#if (eq scope.linter "JSHint")}}
+const lint = require("justo-plugin-jshint");
+{{else if (eq scope.linter "ESLint")}}
+const lint = require("justo-plugin-eslint");
+{{/if}}
 const publish = require("justo-plugin-npm").publish;
 const install = require("justo-plugin-npm").install;
 
 //catalog
-catalog.workflow({name: "build", desc: "Build the package"}, function() {
-  clean("Remove build directory", {
-    dirs: ["build/es5"]
-  });
-
-  jshint("Best practices and grammar", {
+const lnt = catalog.workflow({name: "lint", desc: "Parse source code."}, function() {
+  lint("Best practices and grammar", {
     output: true,
     src: [
       "index.js",
@@ -24,15 +24,13 @@ catalog.workflow({name: "build", desc: "Build the package"}, function() {
       "tett/unit/lib/"
     ]
   });
+});
 
-  babel("Transpile", {
-    comments: false,
-    retainLines: true,
-    preset: "es2015",
-    files: [
-      {src: "index.js", dst: "build/es5/"},
-      {src: "lib/", dst: "build/es5/lib"}
-    ]
+catalog.workflow({name: "build", desc: "Build the package"}, function() {
+  lnt();
+
+  clean("Remove build directory", {
+    dirs: ["build/es5"]
   });
 
   clean("Remove dist directory", {
