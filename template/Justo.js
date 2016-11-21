@@ -37,6 +37,16 @@ catalog.workflow({name: "build", desc: "Build the package"}, function() {
     dirs: ["dist/es5"]
   });
 
+  babel("Transpile", {
+    comments: false,
+    retainLines: true,
+    preset: "{{lowercase scope.jsSpec}}",
+    files: [
+      {src: "index.js", dst: "build/es5/"},
+      {src: "lib/", dst: "build/es5/lib"}
+    ]
+  });
+
   copy(
     "Create package",
     {
