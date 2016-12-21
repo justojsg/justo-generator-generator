@@ -1,5 +1,5 @@
 {
-  "name": "{{dir.name}}",
+  "name": "{{scope.name}}",
   "version": "0.1.0",
   "description": "{{scope.desc}}",
   "homepage": "{{http scope.homepage}}",
@@ -38,7 +38,15 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "babel-preset-{{lowercase scope.jsSpec}}": "*",
+    {{#if (in scope.jsSpec "ES2015" "ES2016" "ES2017")}}
+    "babel-preset-es2015": "*",
+    {{/if}}
+    {{#if (in scope.jsSpec "ES2016" "ES2017")}}
+    "babel-preset-es2016": "*",
+    {{/if}}
+    {{#if (eq scope.jsSpec "ES2017")}}
+    "babel-preset-es2017": "*",
+    {{/if}}
     "justo": "*",
     "justo-assert": "*",
     "justo-assert-fs": "*",

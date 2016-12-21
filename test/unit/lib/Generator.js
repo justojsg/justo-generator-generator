@@ -43,6 +43,7 @@ suite("Generator", function() {
       file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
       file(DST.path, "Justo.js").must.exist();
       file(DST.path, "README.md").must.exist();
+      dir(DST.path, "dist").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
       file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
@@ -64,6 +65,7 @@ suite("Generator", function() {
       file(DST.path, "index.js").text.must.contain("module.exports = {");
       file(DST.path, "Justo.js").must.exist();
       file(DST.path, "README.md").must.exist();
+      dir(DST.path, "dist").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
       file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
@@ -89,6 +91,7 @@ suite("Generator", function() {
       file(DST.path, "index.js").text.must.contain("module.exports = {");
       file(DST.path, "Justo.js").must.exist();
       file(DST.path, "README.md").must.exist();
+      dir(DST.path, "dist").must.exist();
       dir(DST.path, "template").must.exist();
       file(DST.path, "lib/Generator.js").must.exist();
       file(DST.path, "lib/Generator.js").must.contain([
@@ -112,11 +115,14 @@ suite("Generator", function() {
         file(DST.path, ".travis.yml").must.exist();
         file(DST.path, "package.json").must.exist();
         file(DST.path, "package.json").must.contain("babel-preset-es2015");
+        file(DST.path, "package.json").must.not.contain("babel-preset-es2016");
+        file(DST.path, "package.json").must.not.contain("babel-preset-es2017");
         file(DST.path, "index.js").must.exist();
         file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
         file(DST.path, "Justo.js").must.exist();
-        file(DST.path, "Justo.js").must.contain(["babel", "preset: \"es2015\""]);
+        file(DST.path, "Justo.js").must.contain(["babel", "presets: [\"es2015\"]"]);
         file(DST.path, "README.md").must.exist();
+        dir(DST.path, "dist").must.exist();
         dir(DST.path, "template").must.exist();
         file(DST.path, "lib/Generator.js").must.exist();
         file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
@@ -134,12 +140,15 @@ suite("Generator", function() {
         file(DST.path, ".eslintrc").must.not.exist();
         file(DST.path, ".travis.yml").must.exist();
         file(DST.path, "package.json").must.exist();
+        file(DST.path, "package.json").must.contain("babel-preset-es2015");
         file(DST.path, "package.json").must.contain("babel-preset-es2016");
+        file(DST.path, "package.json").must.not.contain("babel-preset-es2017");
         file(DST.path, "index.js").must.exist();
         file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
         file(DST.path, "Justo.js").must.exist();
-        file(DST.path, "Justo.js").must.contain(["babel", "preset: \"es2016\""]);
+        file(DST.path, "Justo.js").must.contain(["babel", "presets: [\"es2015\", \"es2016\"]"]);
         file(DST.path, "README.md").must.exist();
+        dir(DST.path, "dist").must.exist();
         dir(DST.path, "template").must.exist();
         file(DST.path, "lib/Generator.js").must.exist();
         file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");
@@ -157,12 +166,15 @@ suite("Generator", function() {
         file(DST.path, ".eslintrc").must.not.exist();
         file(DST.path, ".travis.yml").must.exist();
         file(DST.path, "package.json").must.exist();
+        file(DST.path, "package.json").must.contain("babel-preset-es2015");
+        file(DST.path, "package.json").must.contain("babel-preset-es2016");
         file(DST.path, "package.json").must.contain("babel-preset-es2017");
         file(DST.path, "index.js").must.exist();
         file(DST.path, "index.js").text.must.contain("module.exports = require(\"./lib/Generator\").default;");
         file(DST.path, "Justo.js").must.exist();
-        file(DST.path, "Justo.js").must.contain(["babel", "preset: \"es2017\""]);
+        file(DST.path, "Justo.js").must.contain(["babel", "presets: [\"es2015\", \"es2016\", \"es2017\"]"]);
         file(DST.path, "README.md").must.exist();
+        dir(DST.path, "dist").must.exist();
         dir(DST.path, "template").must.exist();
         file(DST.path, "lib/Generator.js").must.exist();
         file(DST.path, "lib/Generator.js").text.must.contain("\"The description.\"");

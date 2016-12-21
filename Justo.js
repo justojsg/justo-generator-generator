@@ -90,4 +90,4 @@ catalog.workflow({name: "install", desc: "Install the generator to test."}, func
   });
 });
 
-catalog.macro({name: "default", desc: "Default task."}, ["build", "test"]);
+catalog.macro({name: "default", desc: "Build and test."}, ["build", "test"]);

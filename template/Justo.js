@@ -5,16 +5,18 @@ const babel = require("justo-plugin-babel");
 const copy = require("justo-plugin-fs").copy;
 const clean = require("justo-plugin-fs").clean;
 {{#if (eq scope.linter "JSHint")}}
-const lint = require("justo-plugin-jshint");
+const jslinter = require("justo-plugin-jshint");
 {{else if (eq scope.linter "ESLint")}}
-const lint = require("justo-plugin-eslint");
+const jslinter = require("justo-plugin-eslint");
 {{/if}}
-const publish = require("justo-plugin-npm").publish;
-const install = require("justo-plugin-npm").install;
+const npm = require("justo-plugin-npm");
 
 //catalog
-const lnt = catalog.workflow({name: "lint", desc: "Parse source code."}, function() {
-  lint("Best practices and grammar", {
+const jslint = catalog.simple({
+  name: "jslint",
+  desc: "Parse source code.",
+  task: jslinter,
+  params: {
     output: true,
     src: [
       "index.js",
@@ -23,11 +25,11 @@ const lnt = catalog.workflow({name: "lint", desc: "Parse source code."}, functio
       "test/unit/index.js",
       "tett/unit/lib/"
     ]
-  });
+  }
 });
 
 catalog.workflow({name: "build", desc: "Build the package"}, function() {
-  lnt();
+  jslint("Best practices and grammar (JavaScript)");
 
   clean("Remove build directory", {
     dirs: ["build/es5"]
@@ -40,7 +42,7 @@ catalog.workflow({name: "build", desc: "Build the package"}, function() {
   babel("Transpile", {
     comments: false,
     retainLines: true,
-    preset: "{{lowercase scope.jsSpec}}",
+    presets: [{{#if (in scope.jsSpec "ES2015" "ES2016" "ES2017")}}"es2015"{{/if}}{{#if (in scope.jsSpec "ES2016" "ES2017")}}, "es2016"{{/if}}{{#if (eq scope.jsSpec "ES2017")}}, "es2017"{{/if}}],
     files: [
       {src: "index.js", dst: "build/es5/"},
       {src: "lib/", dst: "build/es5/lib"}
@@ -69,18 +71,24 @@ catalog.macro({name: "test", desc: "Unit testing"}, {
   src: ["test/unit/index.js", "test/unit/lib/"]
 });
 
-catalog.workflow({name: "publish", desc: "NPM publish."}, function() {
-  publish("Publish in NPM", {
+catalog.simple({
+  name: "publish",
+  desc: "Publish in NPM.",
+  task: npm.publish,
+  params: {
     who: "{{scope.npmWho}}",
     src: "dist/es5/nodejs/{{dir.name}}/"
-  });
+  }
 });
 
-catalog.workflow({name: "install", desc: "Install the generator to test."}, function() {
-  install("Install", {
+catalog.simple({
+  name: "install",
+  desc: "Install the generator to test.",
+  task: npm.install,
+  params: {
     pkg: "dist/es5/nodejs/{{dir.name}}/",
     global: true
-  });
+  }
 });
 
-catalog.macro({name: "default", desc: "Default task."}, ["build", "test"]);
+catalog.macro({name: "default", desc: "Build and test."}, ["build", "test"]);

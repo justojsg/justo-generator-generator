@@ -6,7 +6,7 @@ const suite = require("justo").suite;
 const test = require("justo").test;
 const init = require("justo").init;
 const fin = require("justo").fin;
-const Generator = require("../../../dist/es5/nodejs/justo-generator-generator")["generator"];
+const Generator = require("../../../dist/es5/nodejs/justo-generator-generator")["add gen"];
 
 //suite
 suite("Generator", function() {
