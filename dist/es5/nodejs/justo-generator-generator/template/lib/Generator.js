@@ -1,4 +1,4 @@
-//import
+//imports
 {{#if scope.checkDstDir}}
 import * as fs from "justo-fs";
 {{/if}}
@@ -30,6 +30,7 @@ export default class extends HandlebarsGenerator {
   get params() {
     return {};
   }
+  {{#if (contain scope.lifecycleMethods "init()")}}
 
   /**
    * @override
@@ -37,6 +38,8 @@ export default class extends HandlebarsGenerator {
   init() {
     super.init();
   }
+  {{/if}}
+  {{#if (contain scope.lifecycleMethods "fin()")}}
 
   /**
    * @override
@@ -44,6 +47,8 @@ export default class extends HandlebarsGenerator {
   fin() {
     super.fin();
   }
+  {{/if}}
+  {{#if (or (contain scope.lifecycleMethods "preprompt()") scope.checkDstDir)}}
 
   /**
    * @override
@@ -60,6 +65,7 @@ export default class extends HandlebarsGenerator {
     }
     {{/if}}
   }
+  {{/if}}
 
   /**
    * @override
@@ -67,6 +73,7 @@ export default class extends HandlebarsGenerator {
   prompt(answers) {
 
   }
+  {{#if (contain scope.lifecycleMethods "pregenerate()")}}
 
   /**
    * @override
@@ -74,6 +81,7 @@ export default class extends HandlebarsGenerator {
   pregenerate(answers) {
 
   }
+  {{/if}}
 
   /**
    * @override
@@ -81,6 +89,8 @@ export default class extends HandlebarsGenerator {
   generate(answers) {
     {{#if scope.snippet}}
     return this.templateAsString("snippets/{{scope.snippetTemplate}}.hbs", answers);
+    {{else}}
+    
     {{/if}}
   }
 }

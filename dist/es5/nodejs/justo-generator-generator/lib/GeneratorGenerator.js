@@ -41,6 +41,10 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
 
 
 
+
+
+
+
     {
       _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "init", this).call(this);
     } }, { key: "fin", value: function fin()
@@ -60,6 +64,7 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
       this.input("desc");
       if (this.confirm({ name: "snippet", default: answers.name.startsWith("snippet") })) this.input("snippetTemplate");else
       this.confirm("checkDstDir");
+      this.multiselect("lifecycleMethods");
     } }, { key: "generate", value: function generate(
 
 
@@ -77,4 +82,4 @@ var _justoGenerator = require("justo-generator");function _classCallCheck(instan
       this.template("test/unit/lib/CompositeGenerator.js", name + ".js", { cmd: answers.name });
       this.append("index.js", ",\n  \"" + answers.name + "\": require(\"./lib/" + name + "\").default", { line: -3, type: "end" });
       this.append("test/unit/index.js", "\n  test(\"" + answers.name + "\", function() {\n    pkg[\"" + answers.name + "\"].must.be.instanceOf(Function);\n  });\n", { line: -2 });
-    } }, { key: "desc", get: function get() {return "Generate a Justo generator scaffold.";} }, { key: "params", get: function get() {return { name: "Generator name", desc: "Generator description", snippet: { title: "Snippet generator?", type: "Boolean" }, snippetTemplate: "Snippet template file (without .hbs)", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+    } }, { key: "desc", get: function get() {return "Generate a Justo generator scaffold.";} }, { key: "params", get: function get() {return { name: "Generator name", desc: "Generator description", lifecycleMethods: { title: "Lifecycle methods to override?", options: ["init()", "preprompt()", "pregenerate()", "fin()"] }, snippet: { title: "Snippet generator?", type: "Boolean" }, snippetTemplate: "Snippet template file (without .hbs)", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;

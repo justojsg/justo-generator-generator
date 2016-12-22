@@ -98,5 +98,42 @@ suite("Generator", function() {
       file(DST, "test/unit/index.js").must.contain("test(\"word\", function()");
       file(DST, "test/unit/lib/WordGenerator.js").must.exist();
     });
+
+    suite("lifecycleMethods", function() {
+      test("no lifecycle method selected", function() {
+        gen.generate({name: "word", desc: "The description.", snippet: false});
+
+        file(DST, "lib/WordGenerator.js").must.exist();
+        file(DST, "lib/WordGenerator.js").must.not.contain([
+          "init()",
+          "preprompt()",
+          "pregenerate(answers)",
+          "fin()"
+        ]);
+      });
+
+      test("preprompt() not selected but checkDstDir to true", function() {
+        gen.generate({name: "word", desc: "The description.", snippet: false, checkDstDir: true});
+
+        file(DST, "lib/WordGenerator.js").must.exist();
+        file(DST, "lib/WordGenerator.js").must.contain("preprompt()");
+        file(DST, "lib/WordGenerator.js").must.not.contain([
+          "init()",
+          "pregenerate(answers)",
+          "fin()"
+        ]);
+      });
+
+      test("lifecycle methods selected", function() {
+        gen.generate({name: "word", desc: "The description.", snippet: false, lifecycleMethods: ["init()", "preprompt()", "pregenerate()", "fin()"]});
+        file(DST, "lib/WordGenerator.js").must.exist();
+        file(DST, "lib/WordGenerator.js").must.contain([
+          "init()",
+          "preprompt()",
+          "pregenerate(answers)",
+          "fin()"
+        ]);
+      });
+    });
   });
 })();

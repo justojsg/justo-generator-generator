@@ -1,6 +1,6 @@
 {
   "name": "justo-generator-generator",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Generator for a Justo.js generator.",
   "homepage": "http://justojs.org",
   "author": {
