@@ -76,6 +76,7 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
 
 
 
+
     {
       var entries = this.getEntryNames(".").sort();
 
@@ -149,4 +150,4 @@ var _justoGenerator = require("justo-generator");function _interopRequireDefault
       }
 
       this.mkdir("test/unit/data");
-    } }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { author: { title: "Author name", required: true }, authorEmail: "Author email", authorUrl: "Author homepage", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", davidDm: "David DM", desc: "Generator description", gitUrl: "Git URL", homepage: "Generator homepage", jsSpec: { title: "JavaScript spec to use", options: ["ES2015", "ES2016", "ES2017"], default: "ES2015" }, linter: { title: "Code linter", options: ["<none>", "ESLint", "JSHint"], default: "ESLint" }, name: { title: "Generator package name", default: _path2.default.basename(process.cwd()) }, npmWho: "NPM username", snippet: { title: "Default generator is snippet generator?", type: "boolean", default: false }, snippetTemplate: "Snippet template", travisCi: "Travis CI", type: { title: "Generator type", options: ["simple", "composite"] } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
+    } }, { key: "desc", get: function get() {return "Generate a Justo.js generator scaffold.";} }, { key: "params", get: function get() {return { author: { title: "Author name", required: true }, authorEmail: "Author email", authorUrl: "Author homepage", bugsUrl: "Bugs homepage", bugsEmail: "Bugs email", checkDstDir: { title: "Check whether the dir is empty?", type: "Boolean" }, contributor: "Contributor name", contributorEmail: "Contributor email", contributorUrl: "Contributor homepage", davidDm: "David DM", desc: "Generator description", gitUrl: "Git URL", homepage: "Generator homepage", jsSpec: { title: "JavaScript spec to use", options: ["ES2015", "ES2016", "ES2017"], default: "ES2015" }, linter: { title: "Code linter", options: ["<none>", "ESLint", "JSHint"], default: "ESLint" }, name: { title: "Generator package name", default: _path2.default.basename(process.cwd()) }, npmWho: "NPM username", snippet: { title: "Default generator is snippet generator?", type: "boolean", default: false }, snippetTemplate: "Snippet template", travisCi: "Travis CI", type: { title: "Generator type", options: ["simple", "composite"], default: "composite" } };} }]);return _class;}(_justoGenerator.HandlebarsGenerator);exports.default = _class;
